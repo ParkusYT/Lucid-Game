@@ -8,14 +8,14 @@ public class Player : MonoBehaviour
     private CharacterController controller;
 
     [SerializeField] private float speed = 12f;
-    [SerializeField] private float gravity = -9.81f;
+    public float gravity = -9.81f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private LayerMask groundMask;
 
     [SerializeField] private AudioSource walkingAudio;
 
-    Vector3 velocity;
+    public Vector3 velocity;
 
     bool onGround;
 
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.W) && onGround)
         {
             walkingAudio.Play();
         }
